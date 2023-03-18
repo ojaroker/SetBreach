@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home: Set Breach</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.js"></script>
+    <style>
+        body 
+        {
+            background-image: url("Main_Image/PurpleBKG.jpg");
+            font-size: 16px;
+            color: white;
+
+        }
+        h1
+        {
+            color:bisque;
+            font-size: 50px;
+        }
+        /* Company Name on our website's font */
+        p
+        {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        /*Top right filler*/
+        .ourMessage 
+        { 
+            float: right;
+            font-size: 20px;
+            font-family: 'Serif', Lucida-Bright; 
+            width: calc(100% - 40%); 
+        } 
+        /* All Buttons; remaain consistent */
+        .button {
+          border: 2px solid #045a76;
+          color: white;
+          padding: 16px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          transition-duration: 0.4s;
+          cursor: pointer;
+          border-radius: 12px;
+          width: 24%;
+          background-color: transparent;
+        }
+        /* All buttons when the mouse is hovering */
+        .button:hover {
+          background-color: #def7ff;
+          color: black;
+        }
+        /*Collapsible Button*/
+        .collapsible {
+            background-color: transparent;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: 1px;
+            text-align: center;
+            outline: none;
+            font-size: 15px;
+        }
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #5a5757;
+        }
+    </style>
+</head>
+<body>
+    <!--Logo Image on the top left corner-->
+    <img src="Main_Image/SetBreachLogo.png" alt="Set Breach Logo" width="40%">
+    <!--Welcome Message to fill up the page on the top right corner-->
+    <div class="ourMessage">
+        <br><br><br>
+        Each year, colleges are required to publich the common data set(CDS)
+        Our mission is to help you find the perfect college by searching the data sets and 
+        matching you with the right fit using our algorithm.
+        The survey should take no longer than 5 minutes. Use our resources link to view the universities
+        on US News, Niche, and other school websites.
+        <br><br>
+        To begin, please click on the "survey" link. You will answer specific questions, and we will match 
+        you to your best fit.
+        <br><br>
+    </div>
+    <!--Four Main Buttons-->
+    <p><br></p>
+    <button class="button"><a href="surveytest.html" target="_blank" >Begin Survey</a></button>
+    <button class="button">University Resources</button>
+    <button class="button">Niche and US News Guide</button>
+    <button class="button">Feedback and Contact</button>
+    <!--Banner Image-->
+    <img src="Main_Image/University Drawing.png" alt="University Banner" width="100%" height="300px">
+    <!--Collapsible Buttons: Quick messages-->
+    <button class="collapsible">Our Initiative</button>
+    <div class="content">
+        <p> 
+            Universities are viewed as "those best four years" for most people. A successful college
+            experience is not defined soley by the academic ranking a school has to provide; many 
+            times, it is defined by the people we live with and attend classes with. Factors that might 
+            seem insignificant to some students might be deal breakers to other students. Thats why
+            Set Breach aims to match students to their best-fit college using only the factors that
+            matter to the individual at hand. 
+        </p>
+    </div>
+    <button class="collapsible">Our Approach</button>
+    <div class="content">
+        <p> 
+            The biggest challenge in this project was figuring out how we would pull the data from many 
+            colleges' Common Data Sets. We experimented with PDF and spreadsheet reading libraries in 
+            Java but realized we did not have enough time or experience to continue with them. Instead, 
+            we chose 12 colleges and manually saved data to a text file. The next step was to design an 
+            algorithm to rank colleges based on a point system from each question. For most questions, 
+            the number of points added to a college equals the absolute value of the difference between 
+            the college's actual answer index and the user's inputted answer number. After completing 
+            the back end, we worked on the survey website and the process of transferring the user's 
+            inputted answers to the Java program.  
+        </p>
+    </div>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } 
+          });
+        }
+        </script>
+</body>
+
+</html>
