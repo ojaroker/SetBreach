@@ -31,15 +31,32 @@ public class Driver {
 
     private void takeInput(){
 
+        
         try{
-            File file = new File("Project/src/answers.txt");
+
+            File file = new File("Project/src/answers.txt"); //File with answers
             Scanner scan = new Scanner(file);
             int[] answers = new int[numQuestions];
-            
-            //saves all the answers to array
-            for(int i=0;i<numQuestions;i++){
-                answers[i] = scan.nextInt();
+            // for(int i=0;i<293;i++){
+            //     scan.nextLine();
+            // }
+            for(int i=0;scan.hasNext() && i<numQuestions;i++){
+                String s = scan.nextLine();
+                if(s.contains(">1<")){
+                    answers[i] = 1;
+                } else if(s.contains(">2<")){
+                    answers[i] = 2;
+                } else if(s.contains(">3<")){
+                    answers[i] = 3;
+                } else if(s.contains(">4<")){
+                    answers[i] = 4;
+                } else if(s.contains(">5<")){
+                    answers[i] = 5;
+                }
             }
+            //System.out.println(Arrays.toString(answers));
+            
+          
 
             rank(answers);
 
@@ -209,7 +226,7 @@ public class Driver {
         return null;
     }
 
-    private void printResults(String[] arr){
+    public void printResults(String[] arr){
         System.out.println("Top Three Schools For You:\n\t"+arr[0]+"\n\t"+arr[1]+"\n\t"+arr[2]);
     }
 
